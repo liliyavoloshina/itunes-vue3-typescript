@@ -56,7 +56,8 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+
 :root {
   --purple: rgb(131, 58, 180);
   --gradient: linear-gradient(
@@ -65,9 +66,6 @@ export default defineComponent({
     rgba(253, 29, 29, 1) 50%,
     rgba(252, 176, 69, 1) 100%
   );
-}
-* {
-  box-sizing: border-box;
 }
 a {
   color: #42b983;
@@ -95,6 +93,10 @@ select {
   align-items: flex-start;
   width: 20em;
   margin-bottom: 1em;
+
+  width: 30rem;
+  height: 20rem;
+  @include glass;
 }
 .search-results {
   display: flex;
