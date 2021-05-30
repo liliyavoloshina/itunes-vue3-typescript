@@ -1,15 +1,13 @@
-import { ItunesTypes } from "../types/response";
-import SearchParam from "../types/searchParam";
+import { Response } from "../types/response"
 
-export const itunesSearch = async (searchParams: SearchParam): Promise<ItunesTypes> => {
+export const itunesSearch = async (term: string): Promise<Response> => {
   try {
     const req = await fetch(
-      `https://itunes.apple.com/search?term=${searchParams.term}&entity=${searchParams.entity}&limit=10`
+      `https://itunes.apple.com/search?term=${term}&entity=song&limit=10`
     )
     const { results } = await req.json()
     return results
   } catch (e) {
-    console.log('error!')
     throw new Error(e)
   }
 }

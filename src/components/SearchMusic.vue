@@ -1,88 +1,72 @@
 <template>
-  <form @submit.prevent="search">
-    <div class="search-inputs">
-      <div class="search-input">
-        <label for="term">Search term:</label>
-        <input v-model="searchParam.term" id="term" type="text" placeholder="Blink182...">
-      </div>
-      <div class="search-input">
-        <label for="entity">Search entity:</label>
-        <select v-model="searchParam.entity" id="entity">
-          <option value="musicArtist" selected>The artist name</option>
-          <option value="album">The album's title</option>
-          <option value="song">The track's title</option>
-        </select>
-      </div>
+  <form @submit.prevent="search" class="search-form">
+    <div class="search-input">
+      <input v-model="term" id="term" type="text" placeholder="Blink182..."
+        class="search">
     </div>
 
     <button class="search-button">Search!</button>
   </form>
 
-  <div v-if="loading">Loading...</div>
+  <div v-if="loading" class="note">Loading...</div>
+
   <div v-else-if="searchResult.length > 0" class="search-results">
-    <caption>Search results: </caption>
-    <search-item v-for="item in searchResult" :key="item.artistId" :item="item">
-    </search-item>
+    <search-item v-for="item in searchResult" :key="item.artistId" :item="item" />
   </div>
 
-  <div v-else>Start searching something!</div>
+  <div v-else class="note">Start searching something!</div>
 </template>
 
 <script lang="ts">
 import {ref, defineComponent, computed} from 'vue'
 import {useStore} from 'vuex'
 import {key} from '../store'
-import SearchParam from '../types/searchParam'
 import SearchItem from './SearchItem.vue'
 export default defineComponent({
-  components: {SearchItem},
   name: 'SearchMusic',
+  components: {SearchItem},
   setup: () => {
-    const searchParam = ref<SearchParam>({
-      term: '',
-      entity: 'musicArtist'
-    })
+    const term = ref('')
     const loading = ref(false)
     const store = useStore(key)
     const search = async () => {
       loading.value = true
-      await store.dispatch('search', searchParam.value)
+      await store.dispatch('search', term.value)
       loading.value = false
     }
     const searchResult = computed(() => store.state.searchResult)
 
-    return {searchResult, search, searchParam, loading}
+    return {searchResult, search, term, loading}
   }
 })
 </script>
 
 <style lang="scss" scoped>
-
-:root {
-  --purple: rgb(131, 58, 180);
-  --gradient: linear-gradient(
-    90deg,
-    rgba(131, 58, 180, 1) 0%,
-    rgba(253, 29, 29, 1) 50%,
-    rgba(252, 176, 69, 1) 100%
-  );
-}
-a {
-  color: #42b983;
-}
-
 label {
   font-weight: bold;
   margin-bottom: 0.5em;
 }
 
-input,
-select {
-  padding: 0.5em;
+input {
   width: 100%;
+  padding: .5em 1em;
+	border: 0;
+	text-decoration: none;
+	border-radius: .5em;
+	background-color: #0002;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	color: rgba(255, 255, 255, 0.8);
+	font-size: 1.4em;
+	outline: none;
+	&:focus {
+		background-color: rgba(255, 255, 255, 0.2);
+	}
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.342);
+  }
 }
 
-.search-inputs {
+.search-form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -91,25 +75,39 @@ select {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 20em;
+  width: 60%;
   margin-bottom: 1em;
 
-  width: 30rem;
-  height: 20rem;
-  @include glass;
+  @media (max-width: 480px) {
+    width: 90%;
+  }
 }
 .search-results {
   display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
 }
 .search-button {
-  width: 10em;
-  padding: 0.5em;
-  cursor: pointer;
-  background: linear-gradient(
-    90deg,
-    rgba(131, 58, 180, 1) 0%,
-    rgba(253, 29, 29, 1) 50%,
-    rgba(252, 176, 69, 1) 100%
-  );
+  padding: .5em 1em;
+	border: 0;
+	border-radius: .5em;
+	background-color: rgba(255, 255, 255, 0.1);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	color: rgba(255, 255, 255, 0.8);
+	font-size: 1.2em;
+	cursor: pointer;
+	text-transform: uppercase;
+
+	&:hover {
+		background-color: rgba(255, 255, 255, 0.2);
+	}
+}
+
+.note {
+  width: 100%;
+  padding: 2em;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
 }
 </style>

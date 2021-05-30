@@ -14,7 +14,7 @@ export default defineComponent({
 })
 </script>
 
-<style>
+<style lang="scss">
 * {
   box-sizing: border-box;
 }
@@ -24,22 +24,24 @@ html {
 }
 
 body {
-  height: 100%;
-  margin: 0;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
 
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  background: linear-gradient(
-    11.76deg,
-    #4158d0 0.41%,
-    rgba(200, 80, 192, 0.796654) 50.98%,
-    rgba(255, 204, 112, 0.595833) 100%
-  );
-  background-attachment: fixed; 
+::selection {
+  background: #e73c7e;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 </style>

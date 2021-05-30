@@ -1,28 +1,40 @@
-export interface ItunesTypes {
+export interface Response {
 	resultCount: number
-	results: Array<ResponseResult>
+	results: Array<Song> 
 }
 
-export interface ResponseResult {
+export interface Song {
 	wrapperType: string
-	collectionType: string
+	kind: string
 	artistId: number
 	collectionId: number
-	amgArtistId?: number
+	trackId: number
 	artistName: string
 	collectionName: string
+	trackName: string;
 	collectionCensoredName: string
+	trackCensoredName: string
 	artistViewUrl: string
 	collectionViewUrl: string
+	trackViewUrl: string
+	previewUrl: string
+	artworkUrl30: string
 	artworkUrl60: string
 	artworkUrl100: string
 	collectionPrice: number
-	collectionExplicitness: string
-	contentAdvisoryRating?: string
-	trackCount: number
-	copyright: string
-	country: string
-	currency: number
+	trackPrice: number
 	releaseDate: string
+	collectionExplicitness: string
+	trackExplicitness: string
+	discCount: number
+	discNumber: number
+	trackCount: number
+	trackNumber: number
+	trackTimeMillis: number
+	country: string
+	currency: string
 	primaryGenreName: string
+	contentAdvisoryRating?: string
+	isStreamable: boolean
 }
+
