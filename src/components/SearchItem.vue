@@ -52,7 +52,6 @@ export default defineComponent({
 
   .image {
     border: 1px solid #fff;
-    // flex: 1 1;
     height: 10em;
 
     img {
@@ -65,12 +64,16 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    height: 9em;
     font-size: 1.1em;
     .label {
       font-weight: 700;
+      color: black;
+    }
+    .genre-name, .release-date {
+      color: #ee7752;
     }
     a {
-      text-decoration: none;
       color: #e73c7e;
 
       &:hover {
