@@ -70,9 +70,6 @@ export default defineComponent({
       font-weight: 700;
       color: black;
     }
-    .genre-name, .release-date {
-      color: #ee7752;
-    }
     a {
       color: #e73c7e;
 

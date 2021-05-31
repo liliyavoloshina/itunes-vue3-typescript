@@ -23,7 +23,7 @@ export const store = createStore<State>({
 	actions: {
 		async search({ commit }, searchParam: string): Promise<void> {
 			const data = await itunesSearch(searchParam)
-			commit('search', data.results)
+			commit('search', data)
 		}
 	}
 })

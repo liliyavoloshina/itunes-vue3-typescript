@@ -4,9 +4,8 @@ export const itunesSearch = async (term: string): Promise<Response> => {
   try {
     const req = await fetch(
       `https://itunes.apple.com/search?term=${term}&entity=song&limit=10`, {
-      mode: 'no-cors',
       headers: {
-        'Access-Control-Allow-Origin': '*',
+        "Access-Control-Allow-Origin": "*"
       }
     }
     )
