@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="search" class="search-form">
     <div class="search-input">
-      <input v-model="term" id="term" type="text" placeholder="Blink182..."
+      <input v-model="term" id="term" type="text" placeholder="All The Small Things..."
         class="search">
     </div>
 
@@ -14,7 +14,7 @@
     <search-item v-for="item in searchResult" :key="item.artistId" :item="item" />
   </div>
 
-  <div v-else class="note">Start searching something!</div>
+  <div v-else class="note">find your favorite song!</div>
 </template>
 
 <script lang="ts">
@@ -48,19 +48,19 @@ label {
 }
 
 input {
+  margin-top: 2em;
   width: 100%;
-  padding: .5em 1em;
-	border: 0;
-	text-decoration: none;
-	border-radius: .5em;
-	background-color: #0002;
-	border: 1px solid rgba(255, 255, 255, 0.1);
-	color: rgba(255, 255, 255, 0.8);
-	font-size: 1.4em;
-	outline: none;
-	&:focus {
-		background-color: rgba(255, 255, 255, 0.2);
-	}
+  padding: 0.5em 1em;
+  border: 0;
+  border-radius: 0.5em;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.2em;
+  outline: none;
+  &:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
   &::placeholder {
     color: rgba(255, 255, 255, 0.342);
   }
@@ -89,25 +89,26 @@ input {
   align-items: center;
 }
 .search-button {
-  padding: .5em 1em;
-	border: 0;
-	border-radius: .5em;
-	background-color: rgba(255, 255, 255, 0.1);
-	border: 1px solid rgba(255, 255, 255, 0.1);
-	color: rgba(255, 255, 255, 0.8);
-	font-size: 1.2em;
-	cursor: pointer;
-	text-transform: uppercase;
+  padding: 0.5em 1em;
+  border: 0;
+  border-radius: 0.5em;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.2em;
+  cursor: pointer;
+  text-transform: uppercase;
 
-	&:hover {
-		background-color: rgba(255, 255, 255, 0.2);
-	}
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
 }
 
 .note {
   width: 100%;
   padding: 2em;
   text-align: center;
+  text-transform: uppercase;
   color: rgba(255, 255, 255, 0.8);
 }
 </style>
