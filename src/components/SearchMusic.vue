@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="search" class="search-form">
     <div class="search-input">
-      <input v-model="term" id="term" type="text" placeholder="All The Small Things..."
+      <input v-model="term" id="term" type="text" placeholder="All Star..."
         class="search">
     </div>
 
