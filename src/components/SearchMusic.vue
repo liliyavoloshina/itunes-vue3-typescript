@@ -1,8 +1,14 @@
 <template>
   <form @submit.prevent="search" class="search-form">
     <div class="search-input">
-      <input v-model="term" id="term" type="text" placeholder="All Star..."
-        class="search">
+      <input v-model="searchParams.term" id="term" type="text" placeholder="All Star..." class="search">
+    </div>
+    <div class="search-input">
+      <select v-model="searchParams.entity" name="entity" id="entity">
+        <option value="musicTrack">Track</option>
+        <option value="musicArtist">Artist</option>
+        <option value="album">Album</option>
+      </select>
     </div>
 
     <button class="search-button">Search!</button>
@@ -22,21 +28,29 @@ import {ref, defineComponent, computed} from 'vue'
 import {useStore} from 'vuex'
 import {key} from '../store'
 import SearchItem from './SearchItem.vue'
+import {SearchParams} from '../types/searchParams'
 export default defineComponent({
   name: 'SearchMusic',
   components: {SearchItem},
   setup: () => {
-    const term = ref('')
+    const searchParams = ref<SearchParams>({
+      term: '',
+      entity: 'musicTrack'
+    })
+
     const loading = ref(false)
+
     const store = useStore(key)
+
     const search = async () => {
       loading.value = true
-      await store.dispatch('search', term.value)
+      await store.dispatch('search', searchParams.value)
       loading.value = false
     }
+
     const searchResult = computed(() => store.state.searchResult)
 
-    return {searchResult, search, term, loading}
+    return {searchResult, search, searchParams, loading}
   }
 })
 </script>
@@ -48,21 +62,13 @@ label {
 }
 
 input {
-  margin-top: 2em;
-  width: 100%;
-  padding: 0.5em 1em;
-  border: 0;
-  border-radius: 0.5em;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 1.2em;
-  outline: none;
-  &:focus {
-    background-color: rgba(255, 255, 255, 0.2);
-  }
-  &::placeholder {
-    color: rgba(255, 255, 255, 0.342);
+  @include glass-input;
+}
+select {
+  @include glass-input;
+  margin-top: 0;
+  option {
+    color: grey;
   }
 }
 

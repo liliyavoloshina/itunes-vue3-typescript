@@ -19,3 +19,21 @@
 			brightness(130%);
 	}
 }
+@mixin glass-input {
+	margin-top: 2em;
+  width: 100%;
+  padding: 0.5em 1em;
+  border: 0;
+  border-radius: 0.5em;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.2em;
+  outline: none;
+  &:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.342);
+  }
+}

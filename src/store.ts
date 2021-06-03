@@ -1,14 +1,13 @@
 import { InjectionKey } from 'vue'
 import { createStore, Store } from 'vuex'
 import { itunesSearch } from './services/itunesApi'
-import { Song } from './types/response'
+import { Album, Artist, Song } from './types/response'
+import { SearchParams } from './types/searchParams'
 
-// define your typings for the store state
 export interface State {
-	searchResult: Array<Song>
+	searchResult: Array<Song> | Array<Artist> | Array<Album>
 }
 
-// define injection key
 export const key: InjectionKey<Store<State>> = Symbol()
 
 export const store = createStore<State>({
@@ -21,8 +20,8 @@ export const store = createStore<State>({
 		}
 	},
 	actions: {
-		async search({ commit }, searchParam: string): Promise<void> {
-			const data = await itunesSearch(searchParam)
+		async search({ commit }, searchParams: SearchParams): Promise<void> {
+			const data = await itunesSearch(searchParams)
 			commit('search', data)
 		}
 	}

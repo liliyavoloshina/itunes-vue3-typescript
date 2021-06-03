@@ -1,9 +1,10 @@
 import { Response } from "../types/response"
+import { SearchParams } from "../types/searchParams"
 
-export const itunesSearch = async (term: string): Promise<Response> => {
+export const itunesSearch = async (searchParams: SearchParams): Promise<Response> => {
   try {
     const req = await fetch(
-      `https://itunes.apple.com/search?term=${term}&entity=song&limit=10`, {
+      `https://itunes.apple.com/search?term=${searchParams.term}&entity=${searchParams.entity}&limit=10`, {
       headers: {
         "Access-Control-Allow-Origin": "*"
       }
