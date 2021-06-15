@@ -35,7 +35,6 @@
     <div class="info">
       <div class="artist-name"><span class="label">Artist name:</span> <a
           :href="item.artistViewUrl">{{item.artistName}}</a></div>
-      <div class="track-name"><span class="label">Track name:</span> <a :href="item.trackViewUrl">{{item.trackName}}</a>
       </div>
       <div class="collection-name"><span class="label">Collection name:</span> <a
           :href="item.collectionViewUrl">{{item.collectionName}}</a></div>
