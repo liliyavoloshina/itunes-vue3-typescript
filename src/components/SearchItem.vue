@@ -41,11 +41,11 @@
     <div class="genre-name"><span class="label">Genre name:</span> {{item.primaryGenreName}}</div>
     <div class="release-date"><span class="label">Release date:</span> {{new Date(item.releaseDate).toDateString()}}
     </div>
-  </div>
-  <div class="audio">
-    <audio controls preload="none">
-      <source :src="item.previewUrl" type="audio/mp4" />
-    </audio>
+    <div class="audio">
+      <audio controls preload="none">
+        <source :src="item.previewUrl" type="audio/mp4" />
+      </audio>
+    </div>
   </div>
 </template>
 

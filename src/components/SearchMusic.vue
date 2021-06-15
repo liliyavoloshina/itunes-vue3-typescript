@@ -83,6 +83,7 @@ select {
   align-items: flex-start;
   width: 60%;
   margin-bottom: 1em;
+  cursor: pointer;
 
   @media (max-width: 480px) {
     width: 90%;
