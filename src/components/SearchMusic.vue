@@ -20,7 +20,7 @@
     <search-item v-for="item in searchResult" :key="item.artistId" :item="item" />
   </div>
 
-  <div v-else class="note">find your favorite song!</div>
+  <div v-else class="note">find your favorite song/artist/album!</div>
 </template>
 
 <script lang="ts">
