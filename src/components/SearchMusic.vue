@@ -63,10 +63,12 @@ label {
 
 input {
   @include glass-input;
+  cursor: pointer;
 }
 select {
   @include glass-input;
   margin-top: 0;
+  cursor: pointer;
   option {
     color: grey;
   }
@@ -83,7 +85,6 @@ select {
   align-items: flex-start;
   width: 60%;
   margin-bottom: 1em;
-  cursor: pointer;
 
   @media (max-width: 480px) {
     width: 90%;
