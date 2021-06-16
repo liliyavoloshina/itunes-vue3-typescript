@@ -5,7 +5,7 @@
     </div>
     <div class="search-input">
       <select v-model="searchParams.entity" name="entity" id="entity">
-        <option value="musicTrack">Track</option>
+        <option value="musicTrack">Song</option>
         <option value="musicArtist">Artist</option>
         <option value="album">Album</option>
       </select>

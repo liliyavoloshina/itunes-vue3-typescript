@@ -51,13 +51,11 @@
 
 <script lang="ts">
 import {defineComponent, PropType, computed} from 'vue'
-import {Response, Song} from '../types/response'
 
 export default defineComponent({
   name: 'SearchSong',
   props: {
     item: {
-      // как добавить сюда generic???
       type: Object,
       required: true
     }
