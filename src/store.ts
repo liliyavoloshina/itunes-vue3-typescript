@@ -4,13 +4,15 @@ import { itunesSearch } from './services/itunesApi'
 import { Album, Artist, Song } from './types/response'
 import { SearchParams } from './types/searchParams'
 
-export interface State {
-	searchResult: Song[] | Artist[] | Album[]
-}
+// export interface State<T> {
+// 	searchResult: T
+// 	searchResult: Song[] | Artist[] | Album[]
+// }
 
-export const key: InjectionKey<Store<State>> = Symbol()
+export const key = Symbol()
+// export const key: InjectionKey<Store<State>> = Symbol()
 
-export const store = createStore<State>({
+export const store = createStore({
 	state: {
 		searchResult: []
 	},

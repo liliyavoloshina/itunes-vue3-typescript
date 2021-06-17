@@ -36,6 +36,7 @@ import ItemSong from './ItemSong.vue'
 import ItemArtist from './ItemArtist.vue'
 import ItemAlbum from './ItemAlbum.vue'
 import ItemWrapper from './ItemWrapper.vue'
+import { Song } from '../types/response'
 export default defineComponent({
   name: 'SearchMusic',
   components: {ItemSong, ItemArtist, ItemAlbum, ItemWrapper},
