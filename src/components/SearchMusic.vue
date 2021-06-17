@@ -18,9 +18,9 @@
 
   <div v-else-if="searchResult.length > 0" class="search-results">
     <item-wrapper v-for="item in searchResult" :key="item.artistId">
-      <item-song v-if="item.wrapperType === 'track'" :item="item" />
-      <item-artist v-if="item.wrapperType === 'artist'" :item="item" />
-      <item-album v-if="item.wrapperType === 'collection'" :item="item" />
+      <item-song v-show="item.wrapperType === 'track'" :item="item" />
+      <item-artist v-show="item.wrapperType === 'artist'" :item="item" />
+      <item-album v-show="item.wrapperType === 'collection'" :item="item" />
     </item-wrapper>
   </div>
 
@@ -31,7 +31,6 @@
 import {ref, defineComponent, computed} from 'vue'
 import {useStore} from 'vuex'
 import {key} from '../store'
-import SearchItem from './SearchItem.vue'
 import {SearchParams} from '../types/searchParams'
 import ItemSong from './ItemSong.vue'
 import ItemArtist from './ItemArtist.vue'
@@ -39,7 +38,7 @@ import ItemAlbum from './ItemAlbum.vue'
 import ItemWrapper from './ItemWrapper.vue'
 export default defineComponent({
   name: 'SearchMusic',
-  components: {SearchItem, ItemSong, ItemArtist, ItemAlbum, ItemWrapper},
+  components: {ItemSong, ItemArtist, ItemAlbum, ItemWrapper},
   setup: () => {
     const searchParams = ref<SearchParams>({
       term: '',
