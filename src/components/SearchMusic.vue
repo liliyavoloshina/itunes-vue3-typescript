@@ -17,7 +17,11 @@
   <div v-if="loading" class="note">Loading...</div>
 
   <div v-else-if="searchResult.length > 0" class="search-results">
-    <search-item v-for="item in searchResult" :key="item.artistId" :item="item" />
+    <item-wrapper v-for="item in searchResult" :key="item.artistId">
+      <item-song v-if="item.wrapperType === 'track'" :item="item" />
+      <item-artist v-if="item.wrapperType === 'artist'" :item="item" />
+      <item-album v-if="item.wrapperType === 'collection'" :item="item" />
+    </item-wrapper>
   </div>
 
   <div v-else class="note">find your favorite song/artist/album!</div>
@@ -29,9 +33,13 @@ import {useStore} from 'vuex'
 import {key} from '../store'
 import SearchItem from './SearchItem.vue'
 import {SearchParams} from '../types/searchParams'
+import ItemSong from './ItemSong.vue'
+import ItemArtist from './ItemArtist.vue'
+import ItemAlbum from './ItemAlbum.vue'
+import ItemWrapper from './ItemWrapper.vue'
 export default defineComponent({
   name: 'SearchMusic',
-  components: {SearchItem},
+  components: {SearchItem, ItemSong, ItemArtist, ItemAlbum, ItemWrapper},
   setup: () => {
     const searchParams = ref<SearchParams>({
       term: '',
@@ -95,6 +103,7 @@ select {
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
+  padding-bottom: 2em;
 }
 .search-button {
   padding: 0.5em 1em;

@@ -1,7 +1,6 @@
 export interface Response<T> {
 	resultCount: number
-	results: Array<T>
-	// results: Array<Song> | Array<Artist> | Array<Album>
+	results: Array<Song> | Array<Artist> | Array<Album>
 }
 
 export interface Song {
