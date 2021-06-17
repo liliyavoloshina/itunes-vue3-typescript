@@ -18,9 +18,9 @@
 
   <div v-else-if="searchResult.length > 0" class="search-results">
     <item-wrapper v-for="item in searchResult" :key="item.artistId">
-      <item-song v-show="item.wrapperType === 'track'" :item="item" />
-      <item-artist v-show="item.wrapperType === 'artist'" :item="item" />
-      <item-album v-show="item.wrapperType === 'collection'" :item="item" />
+      <item-song :is="item.wrapperType === 'track'" :item="item" />
+      <item-artist :is="item.wrapperType === 'artist'" :item="item" />
+      <item-album :is="item.wrapperType === 'collection'" :item="item" />
     </item-wrapper>
   </div>
 
