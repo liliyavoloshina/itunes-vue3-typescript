@@ -1,6 +1,6 @@
-export interface Response<T> {
+export interface Response {
 	resultCount: number
-	results: T
+	results: Song | Artist | Album
 }
 
 export interface Song {
